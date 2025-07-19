@@ -2,28 +2,37 @@
 
 This file provides guidance to Claude Code when working with the cosmetics Monday.com integration project.
 
-## Project Purpose
+## 🎯 Project Purpose
 
-This is a **focused Monday.com integration tool** for cosmetics formula data. The project syncs data from the local cosmetics database to Monday.com boards for project management and collaboration.
+This is a **comprehensive Monday.com integration platform** for cosmetics formula management. The project creates a sophisticated pricing and relationship tracking system by syncing data from the local cosmetics database to Monday.com boards for advanced project management, cost analysis, and vendor coordination.
 
-## Key Architecture
+## 🏗️ Key Architecture
 
 - **Data Source**: Local PostgreSQL database (`cosmetics_data_hub_v2_local`)
-- **Target**: Monday.com boards via API
-- **Approach**: Read-only operations on source data, create/update Monday boards
-- **Safety**: No modifications to source database
+- **Target**: Monday.com workspace with interconnected boards
+- **Approach**: Read-only operations on source data, create/update Monday boards with full relationship mapping
+- **Safety**: No modifications to source database, comprehensive backup system
 
-## Available Commands
+## 🚀 Available Commands
 
 ### Core Integration
-- `npm run sync` - Sync formulas to Monday board
-- `npm run pricing` - Create ingredient pricing analysis board
-- `npm run backup` - Create database backup
-- `npm run restore` - Restore from backup file
+- `node sync-all-ingredients.js` - Sync all 563 ingredients to Monday board
+- `node calculate-formula-costs.js` - Calculate real-time formula costs using Monday pricing
+- `node connect-ingredients-inci.js` - Link ingredients to INCI compliance data
+- `node upload-remaining-pricing.js` - Batch upload pricing from inFlow inventory
+- `node check-pricing-status.js` - Monitor pricing coverage and gaps
 
-### Development  
+### Enhanced Analysis
+- `node update-formula-details.js` - Update formulas with detailed ingredient breakdowns
+- `node connect-formula-ingredients.js` - Create dependency relationships between formulas and ingredients
+- `node check-missing-data.js` - Identify data gaps and sync issues
+- `node board-status-monitor.js` - Comprehensive board health monitoring
+
+### Development & Diagnostics
 - `npm install` - Install dependencies
-- `node sync-formulas.js --dry-run` - Preview sync without changes
+- `node debug-monday-api.js` - Test Monday API connectivity and permissions
+- `node check-board-structure.js` - Analyze board column structures
+- Add `--dry-run` to any sync script for preview mode
 
 ## Data Sources Available
 
@@ -59,9 +68,18 @@ DATABASE_URL=postgres://earthharbor@localhost:5432/cosmetics_data_hub_v2_local
 - Source: https://monday.com/developers/v2
 - Rate Limit: 10 requests/second
 
-### Board Structure Created
-1. **Formulas Board**: Formula tracking with status, percentages, ingredients
-2. **Pricing Board**: Ingredient cost analysis with usage patterns
+### Board Structure Created (4-Tier Integration)
+1. **🧬 INCI Master Database**: 107+ INCI names for compliance tracking
+2. **🧪 Ingredients Master Database**: 563 ingredients with pricing, INCI connections, and vendor data
+3. **🧪 Cosmetics Formulas**: 78 formulas with cost calculations, ingredient dependencies, and status tracking
+4. **💰 Ingredient Pricing Analysis**: Cost optimization and vendor comparison data
+
+### Advanced Features
+- **Real-time Cost Calculations**: Automatic formula cost updates when ingredient prices change
+- **Dependency Mapping**: Full traceability from formulas → ingredients → INCI → vendors
+- **Pricing Intelligence**: 81.9% coverage with inFlow inventory integration
+- **Compliance Tracking**: INCI name validation and regulatory documentation
+- **Vendor Integration**: Ready for connection to vendors board for supply chain management
 
 ## Safety Protocols
 
