@@ -1,17 +1,22 @@
 {
-  "timestamp": "2025-07-19T04:42:32.654Z",
+  "timestamp": "2025-07-19T11:14:57.169Z",
   "boards": {
     "inci": {
       "status": "healthy",
       "name": "🧬 INCI Master Database",
       "state": "active",
-      "item_count": 107,
-      "column_count": 1,
+      "item_count": 245,
+      "column_count": 2,
       "columns": [
         {
           "id": "name",
           "title": "Name",
           "type": "name"
+        },
+        {
+          "id": "board_relation_mkt0nqcq",
+          "title": "link to 🧪 Ingredients Master Database",
+          "type": "board_relation"
         }
       ],
       "missing_columns": [
@@ -25,8 +30,8 @@
       "status": "healthy",
       "name": "🧪 Ingredients Master Database",
       "state": "active",
-      "item_count": 116,
-      "column_count": 3,
+      "item_count": 498,
+      "column_count": 4,
       "columns": [
         {
           "id": "name",
@@ -39,12 +44,18 @@
           "type": "numbers"
         },
         {
-          "id": "long_text_mkt0t76d",
-          "title": "INCI Names",
-          "type": "long_text"
+          "id": "board_relation_mkt0k7xm",
+          "title": "🧬 INCI Master Database",
+          "type": "board_relation"
+        },
+        {
+          "id": "board_relation_mkt0de9d",
+          "title": "link to 🧪 Cosmetics Formulas - TEST",
+          "type": "board_relation"
         }
       ],
       "missing_columns": [
+        "inci names",
         "usage count",
         "status"
       ],
@@ -54,13 +65,23 @@
       "status": "healthy",
       "name": "🧪 Cosmetics Formulas - TEST",
       "state": "active",
-      "item_count": 79,
-      "column_count": 9,
+      "item_count": 78,
+      "column_count": 11,
       "columns": [
         {
           "id": "name",
           "title": "Name",
           "type": "name"
+        },
+        {
+          "id": "board_relation_mkt08v2f",
+          "title": "🧪 Ingredients Master Database",
+          "type": "board_relation"
+        },
+        {
+          "id": "lookup_mkt0fyfk",
+          "title": "INCI Names",
+          "type": "mirror"
         },
         {
           "id": "numeric_mkt0zz9w",
@@ -98,40 +119,23 @@
           "type": "text"
         },
         {
-          "id": "dependency_mkt02nwy",
-          "title": "Connected Ingredients",
-          "type": "dependency"
+          "id": "long_text_mkt0b95w",
+          "title": "Ingredient Breakdown",
+          "type": "long_text"
         }
       ],
       "missing_columns": [],
       "has_data": true
     },
     "pricing": {
-      "status": "healthy",
-      "name": "💰 Ingredient Pricing - TEST",
-      "state": "active",
-      "item_count": 1,
-      "column_count": 1,
-      "columns": [
-        {
-          "id": "name",
-          "title": "Name",
-          "type": "name"
-        }
-      ],
-      "missing_columns": [
-        "inci name",
-        "usage count",
-        "cost per kg",
-        "priority"
-      ],
-      "has_data": true
+      "status": "not_found",
+      "error": "Board not found or not accessible"
     }
   },
-  "overall_health": "excellent",
+  "overall_health": "good",
   "recommendations": [
     "Add missing columns to inci: category, usage count, status",
-    "Add missing columns to ingredients: usage count, status",
-    "Add missing columns to pricing: inci name, usage count, cost per kg, priority"
+    "Add missing columns to ingredients: inci names, usage count, status",
+    "Recreate pricing board - it may have been deleted"
   ]
 }

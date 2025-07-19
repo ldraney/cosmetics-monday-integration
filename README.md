@@ -7,11 +7,13 @@ This project creates a sophisticated business intelligence platform by syncing c
 ## 🎯 Why This Approach Is Awesome
 
 - **💰 Real-time Cost Intelligence**: Automatic formula cost updates when ingredient prices change
-- **🔗 Visual Dependency Mapping**: See exactly which formulas use which ingredients and suppliers
+- **🔗 Visual Dependency Mapping**: See exactly which formulas use which ingredients (after 2-min setup)
 - **📊 Business Intelligence**: 81.9% pricing coverage with detailed cost analysis
 - **🧬 Compliance Tracking**: Integrated INCI database for regulatory requirements
 - **🤝 Collaborative Workflows**: Built-in team collaboration and approval processes
 - **⚡ Instant Updates**: Changes propagate automatically across all connected boards
+
+> 💡 **One-time setup required**: Monday.com needs a 2-minute manual configuration to enable board connections. After that, everything is automated! See [setup instructions](docs/MONDAY_API_LIMITATIONS.md).
 
 **Current Status**: 563 ingredients, 78 formulas, 1,057 relationships with $43.71/kg average formula cost
 

@@ -1,0 +1,41 @@
+# Environment variables - CONTAINS API KEYS
+.env
+.env.local
+.env.*.local
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Large data files that can be regenerated
+inflow-pricing-matches.json
+*.json.backup
+*.csv.backup
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+.vscode/
+.idea/
+
+# Log files
+*.log
+logs/
+
+# Monday.com API responses (can contain sensitive data)
+board-health-report.json
+
+# Large CSV files that can be regenerated
+ingredients_for_research.csv
+inflow-pricing-matches.csv
+
+# Keep important files for research
+!INCI_RESEARCH_LIST.md
+!claude-inci-prompt.md
+!CLAUDE.md
+!README.md
+!package.json
+!*.js
