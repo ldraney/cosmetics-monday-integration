@@ -167,20 +167,28 @@ async function matchInflowPricing() {
     const ingredientsBoardId = process.env.INGREDIENTS_BOARD_ID;
     let updatedCount = 0;
     
-    // Get board items first to match by name
+    // Get board items first to match by name and check existing pricing
     const boardQuery = `
       query {
         boards(ids: [${ingredientsBoardId}]) {
-          items {
-            id
-            name
+          items_page(limit: 500) {
+            items {
+              id
+              name
+              column_values(ids: ["numeric_mkt0v0h6"]) {
+                id
+                text
+                value
+              }
+            }
           }
         }
       }
     `;
     
     const boardResponse = await monday.api(boardQuery);
-    const boardItems = boardResponse.data.boards[0]?.items || [];
+    const boardData = boardResponse.boards?.[0] || boardResponse.data?.boards?.[0];
+    const boardItems = boardData?.items_page?.items || boardData?.items || [];
     
     console.log(`📋 Found ${boardItems.length} items in Monday ingredients board`);
     
@@ -198,6 +206,13 @@ async function matchInflowPricing() {
           );
           
           if (mondayItem) {
+            // Check if item already has pricing
+            const priceColumn = mondayItem.column_values.find(cv => cv.id === 'numeric_mkt0v0h6');
+            if (priceColumn && priceColumn.text && priceColumn.text !== '' && priceColumn.text !== '0') {
+              // Skip items that already have pricing
+              continue;
+            }
+            
             const costPerKg = estimateCostPerKg(match);
             
             const updateMutation = `

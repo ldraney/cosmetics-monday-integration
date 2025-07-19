@@ -1,28 +1,137 @@
 {
-  "timestamp": "2025-07-19T03:59:53.938Z",
+  "timestamp": "2025-07-19T04:42:32.654Z",
   "boards": {
     "inci": {
-      "status": "error",
-      "error": "Cannot read properties of undefined (reading 'boards')"
+      "status": "healthy",
+      "name": "🧬 INCI Master Database",
+      "state": "active",
+      "item_count": 107,
+      "column_count": 1,
+      "columns": [
+        {
+          "id": "name",
+          "title": "Name",
+          "type": "name"
+        }
+      ],
+      "missing_columns": [
+        "category",
+        "usage count",
+        "status"
+      ],
+      "has_data": true
     },
     "ingredients": {
-      "status": "error",
-      "error": "Cannot read properties of undefined (reading 'boards')"
+      "status": "healthy",
+      "name": "🧪 Ingredients Master Database",
+      "state": "active",
+      "item_count": 116,
+      "column_count": 3,
+      "columns": [
+        {
+          "id": "name",
+          "title": "Name",
+          "type": "name"
+        },
+        {
+          "id": "numeric_mkt0v0h6",
+          "title": "Price per KG",
+          "type": "numbers"
+        },
+        {
+          "id": "long_text_mkt0t76d",
+          "title": "INCI Names",
+          "type": "long_text"
+        }
+      ],
+      "missing_columns": [
+        "usage count",
+        "status"
+      ],
+      "has_data": true
     },
     "formulas": {
-      "status": "error",
-      "error": "Cannot read properties of undefined (reading 'boards')"
+      "status": "healthy",
+      "name": "🧪 Cosmetics Formulas - TEST",
+      "state": "active",
+      "item_count": 79,
+      "column_count": 9,
+      "columns": [
+        {
+          "id": "name",
+          "title": "Name",
+          "type": "name"
+        },
+        {
+          "id": "numeric_mkt0zz9w",
+          "title": "Total Cost per KG",
+          "type": "numbers"
+        },
+        {
+          "id": "long_text_mkt0sc7t",
+          "title": "Formula Notes",
+          "type": "long_text"
+        },
+        {
+          "id": "date_mkt03rt6",
+          "title": "Created Date",
+          "type": "date"
+        },
+        {
+          "id": "color_mkt0v471",
+          "title": "Formula Status",
+          "type": "status"
+        },
+        {
+          "id": "numeric_mkt036p",
+          "title": "Total Percentage",
+          "type": "numbers"
+        },
+        {
+          "id": "numeric_mkt02cns",
+          "title": "Ingredient Count",
+          "type": "numbers"
+        },
+        {
+          "id": "text_mkt08yz2",
+          "title": "Formula Version",
+          "type": "text"
+        },
+        {
+          "id": "dependency_mkt02nwy",
+          "title": "Connected Ingredients",
+          "type": "dependency"
+        }
+      ],
+      "missing_columns": [],
+      "has_data": true
     },
     "pricing": {
-      "status": "error",
-      "error": "Cannot read properties of undefined (reading 'boards')"
+      "status": "healthy",
+      "name": "💰 Ingredient Pricing - TEST",
+      "state": "active",
+      "item_count": 1,
+      "column_count": 1,
+      "columns": [
+        {
+          "id": "name",
+          "title": "Name",
+          "type": "name"
+        }
+      ],
+      "missing_columns": [
+        "inci name",
+        "usage count",
+        "cost per kg",
+        "priority"
+      ],
+      "has_data": true
     }
   },
-  "overall_health": "poor",
+  "overall_health": "excellent",
   "recommendations": [
-    "Check API permissions for inci board",
-    "Check API permissions for ingredients board",
-    "Check API permissions for formulas board",
-    "Check API permissions for pricing board"
+    "Add missing columns to inci: category, usage count, status",
+    "Add missing columns to ingredients: usage count, status",
+    "Add missing columns to pricing: inci name, usage count, cost per kg, priority"
   ]
 }

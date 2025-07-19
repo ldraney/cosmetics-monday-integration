@@ -60,13 +60,15 @@ async function monitorBoardStatus() {
                 title
                 type
               }
-              items(limit: 10) {
-                id
-                name
-                column_values {
+              items_page(limit: 10) {
+                items {
                   id
-                  text
-                  value
+                  name
+                  column_values {
+                    id
+                    text
+                    value
+                  }
                 }
               }
             }
@@ -74,7 +76,11 @@ async function monitorBoardStatus() {
         `;
         
         const response = await monday.api(boardQuery);
-        const board = response.data.boards[0];
+        // Debug: log the raw response structure
+        if (boardName === 'inci') {
+          console.log('  📝 Raw API response:', JSON.stringify(response, null, 2));
+        }
+        const board = response.boards?.[0] || response.data?.boards?.[0];
         
         if (!board) {
           console.log(`  ❌ Board not found or not accessible`);
@@ -95,7 +101,7 @@ async function monitorBoardStatus() {
         `;
         
         const countResponse = await monday.api(countQuery);
-        const itemCount = countResponse.data.boards[0]?.items_count || 0;
+        const itemCount = countResponse.boards?.[0]?.items_count || countResponse.data?.boards?.[0]?.items_count || 0;
         
         console.log(`  ✅ Name: ${board.name}`);
         console.log(`  📊 State: ${board.state}`);
@@ -125,9 +131,10 @@ async function monitorBoardStatus() {
         }
         
         // Sample data check
-        if (board.items.length > 0) {
+        const items = board.items_page?.items || [];
+        if (items.length > 0) {
           console.log(`  🔍 Sample data (first item):`);
-          const sampleItem = board.items[0];
+          const sampleItem = items[0];
           console.log(`    Name: ${sampleItem.name}`);
           
           sampleItem.column_values.slice(0, 3).forEach(cv => {
@@ -144,7 +151,7 @@ async function monitorBoardStatus() {
           column_count: board.columns.length,
           columns: columns,
           missing_columns: missingColumns,
-          has_data: board.items.length > 0
+          has_data: items.length > 0
         };
         
         console.log('');
