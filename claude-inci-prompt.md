@@ -54,20 +54,25 @@ For EACH ingredient, provide this EXACT format:
 
 ## 🚨 Critical Instructions
 
-1. **START WITH HIGH PRIORITY** - Do all 4 high priority ingredients first
-2. **Be thorough with verification** - Don't assume existing INCI names are correct
-3. **Use proper INCI format** - Include "(and)" for blends, proper capitalization
-4. **Note uncertainties** - If unsure, say so and provide best alternatives
-5. **Research trade names carefully** - Many are proprietary blends with specific INCI
+1. **COMPLETE COVERAGE REQUIRED** - Research ALL 563 ingredients for regulatory compliance
+2. **START WITH HIGH PRIORITY** - Do all 4 high priority ingredients first, then systematically work through all others
+3. **Be thorough with verification** - Don't assume existing INCI names are correct
+4. **Use proper INCI format** - Include "(and)" for blends, proper capitalization
+5. **Note uncertainties** - If unsure, say so and provide best alternatives
+6. **Research trade names carefully** - Many are proprietary blends with specific INCI
+7. **PREPARE FOR MONDAY UPLOAD** - Your results will be automatically uploaded to Monday.com INCI board
 
 ## 📊 Expected Deliverable
 
 A comprehensive response with:
-- All 4 HIGH PRIORITY ingredients researched (MANDATORY)
-- As many MEDIUM PRIORITY as possible
-- Key VERIFICATION items checked
-- Organized by priority level
-- Total count of ingredients processed
+- **ALL 563 ingredients researched** (complete regulatory compliance)
+- All 4 HIGH PRIORITY ingredients researched (MANDATORY first)
+- All MEDIUM PRIORITY ingredients researched  
+- All VERIFICATION items checked and corrected if needed
+- All LOW PRIORITY ingredients researched
+- Organized by priority level for easy processing
+- Total count: 563/563 ingredients processed
+- Ready for automatic database update and Monday.com upload
 
 ## 🔍 Special Cases to Watch For
 
@@ -78,20 +83,35 @@ A comprehensive response with:
 - **Emulsifiers** - Often have multiple components
 - **Trade name ingredients** - Research manufacturer specs
 
-## ⚡ Priority Focus
+## ⚡ Processing Strategy
 
-Since this is a large list, focus your energy on:
-1. **Complete ALL 4 high priority ingredients** (non-negotiable)
-2. **Verify the most commonly used ingredients** (Water, Glycerin, etc.)
-3. **Research medium priority items systematically**
-4. **Note any ingredients you couldn't research** with reasons
+For complete regulatory compliance, process ALL 563 ingredients:
+1. **Complete ALL 4 high priority ingredients** (non-negotiable first)
+2. **Verify ALL commonly used ingredients** (Water, Glycerin, etc.)
+3. **Research ALL medium priority items systematically**
+4. **Research ALL low priority and verification items**
+5. **Research ALL remaining ingredients for 100% coverage**
+6. **Note any ingredients you couldn't research** with detailed reasons
+
+**GOAL: 563/563 ingredients with accurate INCI names**
 
 ## 🎯 Success Criteria
 
-- High priority ingredients: 100% completion
-- Medium priority ingredients: 80%+ completion  
-- Verification items: Key ones checked
-- Clear, consistent formatting
-- Confidence levels and sources provided
+- **ALL 563 ingredients: 100% completion** (regulatory requirement)
+- High priority ingredients: 100% completion ✅
+- Medium priority ingredients: 100% completion ✅
+- Low priority ingredients: 100% completion ✅
+- Verification items: 100% checked ✅
+- Clear, consistent formatting for database import
+- Confidence levels and sources provided for all
+- Ready for automatic Monday.com upload
 
-Ready to upload the INCI_RESEARCH_LIST.md file and begin research!
+## 🔄 Next Steps After Research
+
+Your completed research will be:
+1. **Automatically processed** into database updates
+2. **Uploaded to Monday.com INCI Master Database**
+3. **Connected to ingredients** for complete traceability
+4. **Used for regulatory compliance** across all formulas
+
+Ready to upload the INCI_RESEARCH_LIST.md file and begin comprehensive research!
