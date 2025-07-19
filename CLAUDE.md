@@ -1,0 +1,138 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code when working with the cosmetics Monday.com integration project.
+
+## Project Purpose
+
+This is a **focused Monday.com integration tool** for cosmetics formula data. The project syncs data from the local cosmetics database to Monday.com boards for project management and collaboration.
+
+## Key Architecture
+
+- **Data Source**: Local PostgreSQL database (`cosmetics_data_hub_v2_local`)
+- **Target**: Monday.com boards via API
+- **Approach**: Read-only operations on source data, create/update Monday boards
+- **Safety**: No modifications to source database
+
+## Available Commands
+
+### Core Integration
+- `npm run sync` - Sync formulas to Monday board
+- `npm run pricing` - Create ingredient pricing analysis board
+- `npm run backup` - Create database backup
+- `npm run restore` - Restore from backup file
+
+### Development  
+- `npm install` - Install dependencies
+- `node sync-formulas.js --dry-run` - Preview sync without changes
+
+## Data Sources Available
+
+### 1. Local Database (Primary)
+- **Path**: `postgres://earthharbor@localhost:5432/cosmetics_data_hub_v2_local`
+- **Status**: 78 formulas, 563 ingredients, 92.3% health
+- **INCI Coverage**: 60.2% (339/563 ingredients)
+
+### 2. JSON Export (Backup)
+- **Path**: `../cosmetics-data-hub-v2-standalone/prod-data-export-2025-07-19.json`
+- **Contains**: Complete database export with relationships
+
+### 3. SQL Backup (Restore)
+- **Path**: `../cosmetics-data-hub-v2-standalone/cosmetics_database_backup_20250718_193234.sql`
+- **Use**: Full database restoration if needed
+
+### 4. Original Excel (Reference)
+- **Path**: `~/Downloads/Pure Earth Labs Finalized Formula.xlsx`
+- **Contains**: Source truth with 86 formula sheets
+
+## Environment Setup
+
+Required environment variables:
+```env
+MONDAY_API_TOKEN=your_monday_api_token_here
+DATABASE_URL=postgres://earthharbor@localhost:5432/cosmetics_data_hub_v2_local
+```
+
+## Monday.com Integration Details
+
+### API Token Requirements
+- Scope: Read/Write access to boards and items
+- Source: https://monday.com/developers/v2
+- Rate Limit: 10 requests/second
+
+### Board Structure Created
+1. **Formulas Board**: Formula tracking with status, percentages, ingredients
+2. **Pricing Board**: Ingredient cost analysis with usage patterns
+
+## Safety Protocols
+
+1. **Read-Only Source**: Never modify the source cosmetics database
+2. **Dry Run First**: Always test with `--dry-run` flag before syncing
+3. **Backup Before**: Create backups before major operations
+4. **API Limits**: Respect Monday.com rate limits (built into scripts)
+
+## Database Connection
+
+The project connects to the local PostgreSQL database from the main cosmetics project:
+
+```javascript
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || 'postgres://earthharbor@localhost:5432/cosmetics_data_hub_v2_local'
+});
+```
+
+## File Organization
+
+- `sync-formulas.js` - Main sync logic for formulas
+- `create-pricing-board.js` - Pricing analysis board creation
+- `backup-database.js` - Database backup utilities
+- `restore-database.js` - Database restore from SQL/JSON
+- `lib/` - Shared utilities (database, Monday API, helpers)
+
+## Common Use Cases
+
+### Daily Sync Workflow
+1. `npm run sync -- --dry-run` (preview changes)
+2. `npm run sync` (sync formulas to Monday)
+3. `npm run pricing` (update pricing analysis)
+
+### Initial Setup
+1. `npm install` (install dependencies)
+2. Configure `.env` with Monday API token
+3. Test database connection
+4. Create initial boards with sync
+
+### Data Recovery
+1. `npm run backup` (create current state backup)
+2. `npm run restore -- backup_file.sql` (restore from backup)
+
+## Integration Notes
+
+- **Standalone Operation**: Runs independently of main cosmetics app
+- **Data Consistency**: Reads same database as main app
+- **No Conflicts**: Only creates Monday boards, doesn't modify source
+- **Version Control**: Track Monday board configurations in git
+
+## Troubleshooting
+
+### Database Issues
+- Check if PostgreSQL is running: `brew services list | grep postgres`
+- Test connection: `psql -h localhost -p 5432 -U earthharbor -d cosmetics_data_hub_v2_local`
+- Restore if needed: `npm run restore -- ../cosmetics-data-hub-v2-standalone/cosmetics_database_backup_20250718_193234.sql`
+
+### Monday.com Issues  
+- Verify API token permissions
+- Check rate limiting (10 req/sec)
+- Confirm board access rights
+
+### Data Quality
+- Current database health: 92.3% (72/78 formulas well-balanced)
+- INCI coverage: 60.2% (339/563 ingredients)
+- Review formulas with `total_percentage` outside 95-105% range
+
+## Development Guidelines
+
+1. **Test First**: Always use dry-run mode for testing
+2. **Small Batches**: Sync in batches of 10-20 items to avoid rate limits
+3. **Error Handling**: Include proper error handling for API failures
+4. **Logging**: Log all operations for debugging
+5. **Backup Safety**: Create backups before major changes

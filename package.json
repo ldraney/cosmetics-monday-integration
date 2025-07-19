@@ -1,0 +1,27 @@
+{
+  "name": "cosmetics-monday-integration",
+  "version": "1.0.0",
+  "description": "Monday.com integration for cosmetics formula and ingredient data",
+  "main": "index.js",
+  "scripts": {
+    "sync": "node sync-formulas.js",
+    "pricing": "node create-pricing-board.js",
+    "backup": "node backup-database.js",
+    "restore": "node restore-database.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "csv-parse": "^6.1.0",
+    "dotenv": "^16.4.7",
+    "monday-sdk-js": "^0.5.6",
+    "pg": "^8.16.3"
+  },
+  "keywords": [
+    "monday.com",
+    "cosmetics",
+    "formulas",
+    "integration"
+  ],
+  "author": "Pure Earth Labs",
+  "license": "MIT"
+}

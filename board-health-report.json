@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-07-19T03:59:53.938Z",
+  "boards": {
+    "inci": {
+      "status": "error",
+      "error": "Cannot read properties of undefined (reading 'boards')"
+    },
+    "ingredients": {
+      "status": "error",
+      "error": "Cannot read properties of undefined (reading 'boards')"
+    },
+    "formulas": {
+      "status": "error",
+      "error": "Cannot read properties of undefined (reading 'boards')"
+    },
+    "pricing": {
+      "status": "error",
+      "error": "Cannot read properties of undefined (reading 'boards')"
+    }
+  },
+  "overall_health": "poor",
+  "recommendations": [
+    "Check API permissions for inci board",
+    "Check API permissions for ingredients board",
+    "Check API permissions for formulas board",
+    "Check API permissions for pricing board"
+  ]
+}
